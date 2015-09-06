@@ -331,7 +331,7 @@ function parseStream(stringStream, depth) {
             stringStream.pop();
 
             var children;
-            if (tagName in _VOID_TAG_SET) {
+            if (tagName.toLowerCase() in _VOID_TAG_SET) {
                 children = [];
             } else {
                 children = parseStream(stringStream, depth + 1);
@@ -437,7 +437,7 @@ var _DUMP_FUNC = {
             }
         }
         arr.push(">");
-        if (!(tagName in _VOID_TAG_SET)) {
+        if (!(tagName.toLowerCase() in _VOID_TAG_SET)) {
             dumpNodes(node.children, arr);
             arr.push("</" + tagName + ">");
         }
